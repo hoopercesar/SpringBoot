@@ -1,10 +1,12 @@
 package com.hooperdevelopments.crud;
 
+import com.hooperdevelopments.crud.product.Product;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @SpringBootApplication
@@ -16,12 +18,14 @@ public class CrudApplication {
 	}
 
 	@GetMapping(path="/")
-	public List<String> getNames() {
+	public List<Product> getNames() {
 		return List.of(
-				"pepe",
-				"carlo",
-				"peras",
-				"charcha"
-		);
+				new Product(
+				2541L,
+				"Laptop V32",
+				500,
+				LocalDate.of(2010, 6, 21),
+				2
+				));
 	}
 }
