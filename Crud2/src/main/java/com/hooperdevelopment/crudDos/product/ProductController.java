@@ -31,4 +31,9 @@ public class ProductController {
         return this.productService.newProduct(product);
     }
 
+    @DeleteMapping(path="{productId}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable("productId") Long id){
+        return this.productService.deleteProduct(id);
+    }
+
 }

@@ -13,6 +13,8 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
+    HashMap<String, Object> datos = new HashMap<>();
+
     private final ProductRepository productRepository;
 
     @Autowired
@@ -26,8 +28,6 @@ public class ProductService {
 
     public ResponseEntity<Object> newProduct(Product product) {
         Optional<Product> res = productRepository.findProductByName(product.getName());
-
-        HashMap<String, Object> datos = new HashMap<>();
 
         if(res.isPresent() && product.getId()==null){
             datos.put("error", true);
@@ -49,11 +49,22 @@ public class ProductService {
         );
     }
 
-    public void deleteProduct(Long id){
+    public ResponseEntity<Object> deleteProduct(Long id){
         boolean existe = this.productRepository.existsById(id);
         if(!existe){
-            
+            datos.put("error", true);
+            datos.put("message", "El producto no existe");
+            return new ResponseEntity<>(
+                    datos,
+                    HttpStatus.CONFLICT
+            );
         }
+        productRepository.deleteById(id);
+        datos.put("message","Producto Eliminado");
+        return new ResponseEntity<>(
+                datos,
+                HttpStatus.ACCEPTED
+        );
     }
 }
 
