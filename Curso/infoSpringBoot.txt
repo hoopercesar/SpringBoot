@@ -1,4 +1,8 @@
-@RestController: indica a la class que será el controlador. los controladores sirven para manejar las URL. si user está entrando a la URL mydomain/algo.cl los controladores se encargan que esa url devuelva algo. 
+@RestController: indica a la class que será el controlador. 
+los controladores sirven para manejar las URL. si user está entrando a la URL mydomain/algo.cl 
+los controladores se encargan que esa url devuelva algo. 
 
-Para indicar la URL al método (dentro de la class) se usa @RequestMapping(value="algo/mas/alla"). luego, para accesar hay que entrar a localhost:8080/algo/mas/alla.
-Ahora bien, algo importante: cuando se realiza una actualización del controller hay que reiniciar la aplicación. i 
+Para indicar la URL al método (dentro de la class) se usa @RequestMapping(value="algo/mas/alla"). 
+luego, para accesar hay que entrar a localhost:8080/algo/mas/alla.
+Ahora bien, algo importante: cuando se realiza una actualización 
+del controller hay que reiniciar la aplicación. 
