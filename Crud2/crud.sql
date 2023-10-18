@@ -1,0 +1,2 @@
+# crear una DB
+CREATE DATABASE IF NOT EXISTS crud;
