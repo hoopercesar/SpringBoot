@@ -2,6 +2,8 @@ package com.hooperdevelopments.curso.models;
 
 public class Usuario {
     private String nombre;
+
+    private Long id;
     private String apellido;
     private String email;
     private String telefono;
@@ -9,6 +11,14 @@ public class Usuario {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setNombre(String nombre) {
