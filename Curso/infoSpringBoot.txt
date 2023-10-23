@@ -1,8 +1,21 @@
 @RestController: indica a la class que será el controlador. 
 los controladores sirven para manejar las URL. si user está entrando a la URL mydomain/algo.cl 
-los controladores se encargan que esa url devuelva algo...
+los controladores se encargan que esa url devuelva algo. 
 
 Para indicar la URL al método (dentro de la class) se usa @RequestMapping(value="algo/mas/alla"). 
 luego, para accesar hay que entrar a localhost:8080/algo/mas/alla.
 Ahora bien, algo importante: cuando se realiza una actualización 
 del controller hay que reiniciar la aplicación. 
+
+# getter & setter
+con métodos que permiten obtener (get) el valor de las variables o modificarlos (set). 
+
+
+# public class UsuarioController
+controla flujo de información entre usuario y la base de datos.
+esta clase contiene métodos que crean, eliminan y actualizan información en la db.
+
+# interfase
+es una class que controla los métodos que contiene el controller. 
+verifica que se utilicen todas los métodos que se definieron en el controller
+de otro modo, no permite la compilación del proyecto. 
