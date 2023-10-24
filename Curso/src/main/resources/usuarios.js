@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 async function cargarUsuarios() {
 
-    const request = await fetch('usuarios', {
+    const request = await fetch('api/usuarios', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -20,7 +20,14 @@ async function cargarUsuarios() {
     const usuarios = await request.json();
     let listadoHtml=``;
 
+
+
     for (let user of usuarios){
+
+        let botonEliminar = ` <a href="#" onclick="eliminarUsuario(` + user.id + `)" class="btn btn-danger btn-circle btn-sm">
+                                                         <i class="fas fa-trash"></i>
+                                                     </a>
+            `;
 
         let tabla = `
             <tr>
@@ -28,11 +35,7 @@ async function cargarUsuarios() {
                 <td>${user.nombre} ${user.apellido}</td>
                 <td>${user.email}</td>
                 <td>${user.telefono}</td>
-                <td>
-                    <a href="#" class="btn btn-danger btn-circle btn-sm">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                </td>
+                <td>${botonEliminar}</td>-
             </tr>
         `;
 
@@ -45,3 +48,19 @@ async function cargarUsuarios() {
     document.querySelector("#usuarios tbody").outerHTML = listadoHtml;
 
 }
+
+    async function eliminarUsuario(id) {
+        if (!confirm("Desea eliminar usuario?")){
+            return;
+        }
+
+        const request = await fetch('api/usuarios/' + id, {
+                method: 'DELETE',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+            });
+
+        location.reload();
+    }
