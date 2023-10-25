@@ -9,7 +9,7 @@ async function registrarUsuario() {
     datos.nombre = document.getElementById('txtnombre').value;
     datos.apellido = document.getElementById('txtapellido').value;
     datos.email = document.getElementById('txtemail').value;
-    datos.telefono = '1234568769'
+
     datos.password = document.getElementById('txtpassword').value;
 
     let password2 = document.getElementById('txtrepetirpassword').value;
@@ -30,6 +30,9 @@ async function registrarUsuario() {
 
     const usuarios = await request.json();
     let listadoHtml=``;
+
+    window.location.href = 'http://localhost:8080/usuarios.html';
+
 
     // '''''
 
