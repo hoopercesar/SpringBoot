@@ -3,10 +3,7 @@ package com.hooperdevelopments.curso.Controllers;
 import com.hooperdevelopments.curso.dao.UsuarioDao;
 import com.hooperdevelopments.curso.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +28,14 @@ public class UsuarioController {
         return usuario;
     }
 
-    @RequestMapping(value = "api/usuarios")
+    @RequestMapping(value = "api/usuarios", method= RequestMethod.GET)
     public List<Usuario> getUsuarios(){
         return usuarioDao.getUsuarios();
+    }
+
+    @RequestMapping(value = "api/usuarios", method= RequestMethod.POST)
+    public void registrarUsuario(@RequestBody Usuario usuario){
+        usuarioDao.registrar(usuario);
     }
 
     @RequestMapping(value = "api/usuario23")
