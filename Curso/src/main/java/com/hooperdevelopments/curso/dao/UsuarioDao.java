@@ -9,4 +9,6 @@ public interface UsuarioDao {
 
 
     void deleteUsuario(Long id);
+
+    void registrar(Usuario usuario);
 }
