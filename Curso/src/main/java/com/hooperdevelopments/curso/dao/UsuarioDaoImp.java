@@ -36,9 +36,14 @@ public class UsuarioDaoImp implements UsuarioDao{
     }
 
     @Override
-    public void verificarUsuario(Usuario usuario) {
-        String query = "FROM Usuario";
+    public boolean verificarCredenciales(Usuario usuario) {
+        String query = "FROM Usuario WHERE email = :email AND password = :password";
+        List<Usuario> lista = entityManager.createQuery(query)
+                .setParameter("email", usuario.getEmail())
+                .seetParameter("password", usuario.getPassword())
+                .getResultList();
 
+        return !lista.isEmpty();
 
     }
 }
