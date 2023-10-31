@@ -40,7 +40,7 @@ public class UsuarioDaoImp implements UsuarioDao{
         String query = "FROM Usuario WHERE email = :email AND password = :password";
         List<Usuario> lista = entityManager.createQuery(query)
                 .setParameter("email", usuario.getEmail())
-                .seetParameter("password", usuario.getPassword())
+                .setParameter("password", usuario.getPassword())
                 .getResultList();
 
         return !lista.isEmpty();
