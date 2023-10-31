@@ -1,28 +1,26 @@
 package com.hooperdevelopments.curso.models;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
+@Data
 @Table(name="usuarios")
 @ToString @EqualsAndHashCode
 public class Usuario {
-    @Getter @Setter @Column(name="nombre")
+    @Column(name="nombre")
     private String nombre;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter @Column(name="id")
+    @Column(name="id")
     private Long id;
-    @Getter @Setter @Column(name="apellido")
+    @Column(name="apellido")
     private String apellido;
-    @Getter @Setter @Column(name="email")
+    @Column(name="email")
     private String email;
-    @Getter @Setter @Column(name="telefono")
+    @Column(name="telefono")
     private String telefono;
-    @Getter @Setter @Column(name="password")
+    @Column(name="password")
     private String password;
 
 
