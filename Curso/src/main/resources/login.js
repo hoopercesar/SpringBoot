@@ -10,14 +10,8 @@ async function iniciarSesion() {
     datos.email = document.getElementById('txtemail').value;
     datos.password = document.getElementById('txtpassword').value;
 
-    let password2 = document.getElementById('txtrepetirpassword').value;
 
-    if (password2 != datos.password){
-        alert('Las contraseñas no coinciden!')
-        return;
-    }
-
-    const request = await fetch('api/usuarios', {
+    const request = await fetch('api/login', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -26,10 +20,14 @@ async function iniciarSesion() {
         body: JSON.stringify(datos)
     });
 
-    const usuarios = await request.json();
-    let listadoHtml=``;
+    const usuarios = await request.text();
+    if (usuarios == "OK") {
+        window.location.href = 'usuarios.html';
+    } else {
+        alert("Las credenciales son incorrectas");
+    }
 
-    window.location.href = 'http://localhost:8080/usuarios.html';
+
 
 
     // '''''
