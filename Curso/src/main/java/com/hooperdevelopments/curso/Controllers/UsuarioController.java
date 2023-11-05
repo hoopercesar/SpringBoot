@@ -2,6 +2,8 @@ package com.hooperdevelopments.curso.Controllers;
 
 import com.hooperdevelopments.curso.dao.UsuarioDao;
 import com.hooperdevelopments.curso.models.Usuario;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +37,9 @@ public class UsuarioController {
 
     @RequestMapping(value = "api/usuarios", method= RequestMethod.POST)
     public void registrarUsuario(@RequestBody Usuario usuario){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hashed = argon2.hash(1, 1024, 1, usuario.getPassword());
+        usuario.setPassword(hashed);
         usuarioDao.registrar(usuario);
     }
 
