@@ -27,11 +27,11 @@ async function registrarUsuario() {
         },
         body: JSON.stringify(datos)
     });
+    alert("Usuario registrado con éxito!")
 
-    const usuarios = await request.json();
     let listadoHtml=``;
 
-    window.location.href = 'http://localhost:8080/usuarios.html';
+    window.location.href = 'login.html';
 
 
     // '''''
