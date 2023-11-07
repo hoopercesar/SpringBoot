@@ -13,6 +13,9 @@ public class AuthController {
     @Autowired
     private UsuarioDao usuarioDao;
 
+    @Autowired
+    private JWTUtil jwtUtil;
+
     @RequestMapping(value = "api/login", method= RequestMethod.POST)
     public String login(@RequestBody Usuario usuario){
 
