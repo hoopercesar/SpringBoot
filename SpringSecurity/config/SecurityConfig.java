@@ -10,6 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    // configuration 1
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
 //        return httpSecurity
@@ -21,9 +22,17 @@ public class SecurityConfig {
 //                .and()
 //                .build();
 //    }
+//    configuration 2
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.build();
+        return httpSecurity
+                .authorizeHttpRequests( auth -> {
+                    auth.requestMatchers("v1/index2").permitAll();
+                            auth.anyRequest().authenticated();
+                })
+                .formLogin().permitAll()
+                .and()
+                .build();
     }
 
 }
