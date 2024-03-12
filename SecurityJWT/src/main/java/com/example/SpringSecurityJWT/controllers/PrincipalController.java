@@ -51,7 +51,7 @@ public class PrincipalController {
     @DeleteMapping("/deleteUser")
     public String deleteUser(@RequestParam String id) {
         userRepository.deleteById(Long.parseLong(id));
-        return "se ha borrado con id".concat(id);
+        return "se ha borrado usuario con id ".concat(id);
     }
 
 
