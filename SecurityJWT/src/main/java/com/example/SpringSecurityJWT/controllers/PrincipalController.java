@@ -8,6 +8,7 @@ import com.example.SpringSecurityJWT.repositories.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class PrincipalController {
     }
 
     @PostMapping("/createUser")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> createUser(@Valid @RequestBody CreateUserDTO createUserDTO){
 
         Set<RoleEntity> roles = createUserDTO.getRoles().stream()
